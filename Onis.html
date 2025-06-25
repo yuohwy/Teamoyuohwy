@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Onis VIP</title>
+<style>
+/* --- VARIABLES DE COLOR PARA FÁCIL EDICIÓN --- */
+:root {
+  --neon-glow-color: #00f0ff;
+  --text-glow-color: #00f2ff;
+}
+
+body {
+  background: #000 url('https://www.transparenttextures.com/patterns/stardust.png');
+  animation: move-background 150s linear infinite;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: auto; /* Ajustar altura al contenido */
+  min-height: 100vh; /* Asegurar que al menos cubra la pantalla */
+  margin: 0;
+  padding-top: 20px; /* Espacio superior */
+  padding-bottom: 30px; /* Espacio inferior */
+}
+
+@keyframes move-background {
+  from { background-position: 0 0; }
+  to { background-position: 1000px 500px; }
+}
+
+/* Estilos para el título animado */
+#titulo {
+  font-size: 4em;
+  font-family: sans-serif;
+  background: linear-gradient(270deg, red, purple, blue, red);
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animarColores 5s linear infinite;
+  text-shadow: 0 0 20px rgba(255,0,255,0.7);
+  margin-bottom: 30px;
+  transition: font-size 0.6s ease-in-out;
+}
+
+@keyframes animarColores {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Estilos para el contenedor del logo escáner */
+.scanner-container {
+  position: relative;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 0 0 30px var(--neon-glow-color), 0 0 60px var(--neon-glow-color) inset;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.scanner-container::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,255,255,0.1) 0%, rgba(0,255,255,0.4) 50%, rgba(0,255,255,0.1) 100%);
+  animation: scanner 3s linear infinite;
+  pointer-events: none;
+}
+
+.logo-img {
+  max-width: 250px;
+  border-radius: 10px;
+  display: block;
+}
+
+@keyframes scanner {
+  0% { top: -100%; }
+  100% { top: 100%; }
+}
+
+/* Estilos para el texto animado 1 y 2 */
+.typewriter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.typewriter {
+  font-family: monospace;
+  font-size: 1.8em;
+  color: var(--text-glow-color);
+  text-shadow: 0 0 5px var(--text-glow-color), 0 0 10px var(--text-glow-color), 0 0 20px var(--text-glow-color);
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: .1em solid var(--text-glow-color);
+  width: 0;
+  animation: typing 4s steps(30, end) forwards, blink 0.8s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--text-glow-color); }
+}
+
+/* Estilos para el texto de redes sociales */
+.social-text, .final-text {
+  font-family: Arial, sans-serif;
+  font-size: 1.5em;
+  font-weight: bold;
+  background: linear-gradient(90deg, red, purple, blue);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: cambiarColor 5s ease infinite;
+  text-align: center;
+  margin-bottom: 25px;
+  padding: 0 20px;
+}
+
+@keyframes cambiarColor {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- ESTILOS MODIFICADOS PARA BOTONES DE REDES SOCIALES --- */
+.botones-sociales {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+/* --- KEYFRAME PARA LA NUEVA ANIMACIÓN DE RESPLANDOR --- */
+@keyframes animacion-resplandor {
+  0%, 100% {
+    box-shadow: 0 0 5px var(--glow-color), 0 0 10px var(--glow-color);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--glow-color), 0 0 30px var(--glow-color);
+  }
+}
+
+.boton-futurista {
+  position: relative;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+  /* Aplicamos la nueva animación de resplandor */
+  animation: animacion-resplandor 2.5s infinite linear;
+}
+
+/* Se definen los colores de fondo y la variable --glow-color para cada botón */
+.boton-facebook { 
+  background: linear-gradient(45deg, #1877f2, #4267b2); 
+  --glow-color: #1877f2;
+}
+.boton-instagram { 
+  background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d); 
+  --glow-color: #e1306c;
+}
+.boton-tiktok { 
+  background: linear-gradient(45deg, #000000, #ee1d52, #ffffff); 
+  --glow-color: #ee1d52;
+}
+.boton-youtube { 
+  background: linear-gradient(45deg, #ff0000, #c4302b); 
+  --glow-color: #ff0000;
+}
+
+.boton-futurista:hover {
+  transform: scale(1.05); /* Agranda ligeramente el botón al pasar el mouse */
+}
+
+/* Estilos para el contenedor del temporizador */
+.timer-container {
+  position: relative;
+  width: 280px;
+  height: 30px;
+  background: #1f2833;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.progress-main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: cyan;
+  transition: width 0.1s linear, background-color 1s linear;
+}
+
+.progress-wave {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(2px);
+  transition: width 0.1s linear;
+}
+
+.time {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  pointer-events: none;
+  font-size: 1em;
+}
+
+/* Estilos para el botón de WhatsApp */
+.whatsapp-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.futurista-whatsapp-btn {
+  position: relative;
+  padding: 15px 40px;
+  font-size: 18px;
+  font-family: sans-serif;
+  color: #fff;
+  text-decoration: none;
+  border: 2px solid transparent;
+  background: linear-gradient(45deg, #25d366, #128c7e);
+  background-size: 400% 400%;
+  border-radius: 12px;
+  animation: animarFondoWhatsapp 6s linear infinite;
+  box-shadow: 0 0 20px #25d366, 0 0 40px #128c7e;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  z-index: 1;
+}
+
+.futurista-whatsapp-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px #25d366, 0 0 60px #128c7e;
+}
+
+@keyframes animarFondoWhatsapp {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.whatsapp-inactive {
+  background: #888;
+  box-shadow: none;
+  animation: none;
+  cursor: not-allowed;
+  transform: scale(1);
+}
+.whatsapp-inactive:hover {
+  box-shadow: none;
+  transform: scale(1);
+}
+.whatsapp-inactive::before {
+  display: none;
+}
+
+/* --- MEJORA: RETROALIMENTACIÓN AL PRESIONAR --- */
+.boton-futurista:active, .futurista-whatsapp-btn:active {
+  transform: scale(0.97);
+  transition: transform 0.1s ease;
+}
+
+/* --- MEJORA: OPTIMIZACIÓN PARA MÓVILES --- */
+@media (max-width: 600px) {
+  #titulo {
+    font-size: 2.5em; /* Más pequeño para móviles */
+  }
+  .typewriter {
+    font-size: 1.2em; /* Más legible */
+  }
+  .social-text, .final-text {
+    font-size: 1.1em;
+  }
+  .botones-sociales {
+    flex-direction: column; /* Apila los botones verticalmente */
+    gap: 15px;
+    align-items: center; /* Centra los botones apilados */
+  }
+  .boton-futurista {
+    padding: 10px 25px;
+    font-size: 14px;
+    width: 150px; /* Ancho fijo para botones apilados */
+    text-align: center;
+  }
+  .futurista-whatsapp-btn {
+    padding: 12px 35px;
+    font-size: 16px;
+  }
+}
+
+</style>
+</head>
+<body>
+<h1 id="titulo">Hola Hola</h1>
+<div class="scanner-container">
+<img src="https://i.postimg.cc/qv3TDwLH/Logotipo-Emprendimiento-Decoraci-n-Femenino-Blanco-y-Negro-20250521-133620-0000.jpg" alt="Logotipo Futurista" class="logo-img">
+</div>
+<div class="typewriter-container">
+<div class="typewriter">¡Hola, Onis únicas y únicos!</div>
+</div>
+<div class="social-text">
+¡ Sígueme en todas mis redes sociales y envíame la captura para entrar a mi grupo VIP exclusivo !
+</div>
+
+<div class="botones-sociales">
+    <a href="https://www.facebook.com/share/1988hbmuv1/" target="_blank" class="boton-futurista boton-facebook">Facebook</a>
+    <a href="https://www.instagram.com/yuohwy" target="_blank" class="boton-futurista boton-instagram">Instagram</a>
+    <a href="https://www.tiktok.com/@yuohwy?_t=ZM-8xTQCQB23Ak&_r=1" target="_blank" class="boton-futurista boton-tiktok">TikTok</a>
+    <a href="https://youtube.com/@yuohwy?si=BBwm7qsZzbGL38yg" target="_blank" class="boton-futurista boton-youtube">YouTube</a>
+</div>
+<div class="final-text">
+¡ Cuando termines envíame las capturas por aquí !
+</div>
+<div class="timer-container">
+<div class="progress-wave" id="wave"></div>
+<div class="progress-main" id="progress"></div>
+<div class="time" id="time">40s</div>
+</div>
+<div class="whatsapp-button-container">
+<a id="whatsappBtn" class="futurista-whatsapp-btn whatsapp-inactive" href="https://wa.me/59177594699?text=jajajaja%20re%20facil%20yuohwy%20No%20te%20olvides%20de%20agregarme%20al%20grupo%20VIP" target="_blank">
+WhatsApp
+</a>
+</div>
+<script>
+// Efecto de tamaño pulsante para el título
+const titulo = document.getElementById('titulo');
+let grow = true;
+setInterval(() => {
+  // Ajuste para la media query en móviles
+  const isMobile = window.matchMedia("(max-width: 600px)").matches;
+  let baseSize, growSize;
+  if (isMobile) {
+    baseSize = '2.5em';
+    growSize = '2.7em';
+  } else {
+    baseSize = '4em';
+    growSize = '4.2em';
+  }
+  
+  titulo.style.fontSize = grow ? growSize : baseSize;
+  grow = !grow;
+}, 600);
+
+
+// --- SCRIPT DEL TEMPORIZADOR CORREGIDO Y COMPLETO ---
+const duration = 40; // segundos
+let current = 0;
+const progress = document.getElementById('progress');
+const wave = document.getElementById('wave');
+const timeDisplay = document.getElementById('time');
+const whatsappBtn = document.getElementById('whatsappBtn');
+
+// Desactivar el enlace de WhatsApp inicialmente
+whatsappBtn.style.pointerEvents = 'none';
+
+const interval = setInterval(() => {
+  current++;
+  const percent = (current / duration) * 100;
+  progress.style.width = percent + '%';
+  wave.style.width = percent + '%';
+  
+  const remainingTime = duration - current;
+  timeDisplay.textContent = remainingTime > 0 ? remainingTime + 's' : '0s';
+
+  // Cambio gradual de color: de cyan a limegreen según porcentaje
+  const cyan = [0, 255, 255];
+  const lime = [50, 205, 50];
+  const mix = cyan.map((c, i) => Math.round(c + (lime[i] - c) * (percent / 100)));
+  progress.style.backgroundColor = `rgb(${mix[0]}, ${mix[1]}, ${mix[2]})`;
+  
+  // Lógica para cuando el temporizador llega a cero
+  if (percent >= 100) {
+    clearInterval(interval); // Detener el temporizador
+    timeDisplay.textContent = '¡Listo!';
+    
+    // Activar el botón de WhatsApp
+    whatsappBtn.classList.remove('whatsapp-inactive');
+    whatsappBtn.style.pointerEvents = 'auto'; // Hacer el enlace clickeable
+  }
+}, 1000); // El intervalo se ejecuta cada 1000ms (1 segundo)
+</script>
+
+</body>
+</html>
