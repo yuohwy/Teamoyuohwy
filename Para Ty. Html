@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Un Mensaje Para Ti</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Orbitron', sans-serif;
+      color: white;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .panel {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 25px rgba(255, 0, 150, 0.3);
+      max-width: 600px;
+      text-align: center;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 22px;
+      line-height: 1.6;
+      background: linear-gradient(45deg, #ff0066, #6600ff, #00ffff, #ffcc00);
+      background-size: 400% 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 8s ease infinite;
+    }
+
+    @keyframes shine {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .boton {
+      margin-top: 30px;
+      padding: 12px 25px;
+      border: none;
+      font-size: 14px;
+      border-radius: 12px;
+      background: linear-gradient(45deg, #ff0066, #6600ff, #00ffff);
+      background-size: 300% 300%;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 15px #ff0080;
+      transition: transform 0.2s;
+      animation: pulse 3s infinite;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .boton:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 10px #ff00c8; }
+      50% { box-shadow: 0 0 25px #00ffff; }
+      100% { box-shadow: 0 0 10px #ff00c8; }
+    }
+
+    .circulos {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .circulos span {
+      position: absolute;
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      animation: flotar 20s linear infinite;
+      border-radius: 50%;
+      bottom: -150px;
+    }
+
+    .circulos span:nth-child(1) { left: 25%; animation-delay: 0s; }
+    .circulos span:nth-child(2) { left: 10%; animation-delay: 2s; animation-duration: 12s; }
+    .circulos span:nth-child(3) { left: 70%; animation-delay: 4s; }
+    .circulos span:nth-child(4) { left: 40%; animation-delay: 0s; animation-duration: 18s; }
+    .circulos span:nth-child(5) { left: 90%; animation-delay: 3s; }
+    .circulos span:nth-child(6) { left: 50%; animation-delay: 7s; }
+    .circulos span:nth-child(7) { left: 80%; animation-delay: 5s; animation-duration: 15s; }
+
+
+    @keyframes flotar {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <audio id="background-music" src="https://www.dropbox.com/scl/fi/p0gx82prww782si4j3zok/Avaava.mp3?rlkey=6lj6l7kb7iszm4pxn4esioglm&st=w986w6j0&dl=1"></audio>
+
+  <div class="circulos">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <div class="panel" id="panel-intro">
+    <h1>Esto es para Ty mi vida. Con mucho amor</h1>
+    <button class="boton" id="start-button">para Ty</button>
+  </div>
+
+  <div class="panel" id="panel-1" style="display:none;"><h1>Buenos días, mi amor...</h1></div>
+  <div class="panel" id="panel-2" style="display:none;"><h1>"Mientras el sol asoma y el mundo empieza a respirar, mi corazón busca la profunda magia de tu mirada. Esa chispa única que brilla en tus ojos, ¿es un reflejo de tus anhelos más profundos, o la silenciosa victoria de haber superado algo que solo tú conoces, y que te hace aún más admirable y real a mis ojos?"</h1></div>
+  <div class="panel" id="panel-3" style="display:none;"><h1>Cada mañana, tu sola existencia...</h1></div>
+  <div class="panel" id="panel-4" style="display:none;"><h1>Me abre los ojos a un nuevo día, a veces el alma siente el peso de lo no dicho o de heridas invisibles que la vida deja. Pero contigo, mi amor, quiero que sepas que cada cicatriz de tu camino es bienvenida, cada vulnerabilidad es un mapa hacia un amor más profundo</h1></div>
+  <div class="panel" id="panel-5" style="display:none;"><h1>¿Qué verdad de tu corazón anhelas que sea aceptada, para que juntos podamos dibujar un futuro donde seas completamente libre y amada por quien realmente eres?"</h1></div>
+
+  <div class="panel" id="panel-final" style="display:none;">
+    <h1>¿Te gustó mi amor?</h1>
+    <button class="boton" onclick="window.location.href='https://wa.me/59177594699?text=Me%20gust%C3%B3%20mucho%20amor'">💌 Envíame un mensaje</button>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const music = document.getElementById('background-music');
+      const panels = [
+        document.getElementById('panel-intro'),
+        document.getElementById('panel-1'),
+        document.getElementById('panel-2'),
+        document.getElementById('panel-3'),
+        document.getElementById('panel-4'),
+        document.getElementById('panel-5'),
+        document.getElementById('panel-final')
+      ];
+      const startButton = document.getElementById('start-button');
+      let currentIndex = 0;
+
+      function showPanel(index) {
+        panels.forEach((panel, i) => {
+          panel.style.display = (i === index) ? 'flex' : 'none';
+        });
+      }
+
+      function next() {
+        if (currentIndex < panels.length - 1) {
+          currentIndex++;
+          showPanel(currentIndex);
+        }
+      }
+
+      // Inicia la música y la secuencia de paneles
+      startButton.addEventListener('click', (event) => {
+        event.stopPropagation();
+        // Inicia la música
+        music.play().catch(error => console.log("La reproducción automática fue bloqueada por el navegador."));
+        next();
+      });
+
+      // Permite avanzar haciendo click en cualquier parte de la pantalla
+      document.body.addEventListener('click', (event) => {
+        if (currentIndex > 0 && event.target.tagName !== 'BUTTON') {
+          next();
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
